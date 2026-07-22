@@ -1,1 +1,4 @@
 *.drawio
+.venv
+/test
+*/__pycache__
