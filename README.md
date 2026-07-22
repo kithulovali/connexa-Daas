@@ -1,3 +1,3 @@
 # connexa-Daas
 
-Decetralized database as service That support Postgres ,Mongodb ,MySql ,Mariadb
+## Database as service that support Postgres ,Mongodb ,MySql ,Mariadb
