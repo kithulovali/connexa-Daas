@@ -6,10 +6,10 @@ class NetworkManager:
         self.client = client 
         
     def check_database_network_exists(self,network_name:str):
-        self.client.networks.get(network_name)
+      return   self.client.networks.get(network_name)
     
     def create_new_database_network(self, network_name:str):
-        self.client.networks.create( 
+      return   self.client.networks.create( 
                                     name = network_name,
                                     driver ="bridge" )
     
@@ -22,7 +22,7 @@ class NetworkManager:
     def delete_existing_network(self,network_name:str):
         network = self.client.networks.get(network_name)
         network.remove(force=True)
-        print(network_name ,"deleted")
+
         
     #@admin   
     def list_all_database_networks(self):

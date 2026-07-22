@@ -7,11 +7,11 @@ class ImageManager:
 
         
     def check_database_engine_exists(self,database_engine:str) -> True:
-        self.client.images.get(database_engine)
-        print(database_engine)
+       return self.client.images.get(database_engine)
+
     
     def create_new_database_engine(self,database_engine:str):
-        self.client.images.pull(database_engine)
+       return self.client.images.pull(database_engine)
         
     
     def ensure_database_engine_exists(self,database_engine:str):
@@ -20,9 +20,9 @@ class ImageManager:
     
     #@admin
     def delete_existing_database_engine(self,database_engine:str):
-        self.client.images.remove(database_engine,force=True)
+         return self.client.images.remove(database_engine,force=True)
         
     #@admin
     def list_all_database_engine(self):
-         images = self.client.images.list(all=True)
-         print(images)
+        return  self.client.images.list(all=True)
+  

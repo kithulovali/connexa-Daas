@@ -9,7 +9,8 @@ class ContainerManager :
                  port_manager,
                  databases,
                  name_generator,
-                 resource_manager
+                 resource_manager,
+                 connection_manager
                  ):
         self.client = client
         self.name_generator = name_generator
@@ -19,6 +20,7 @@ class ContainerManager :
         self.port_manager = port_manager
         self.resource_manager = resource_manager
         self.databases = databases
+        self.connection_manager = connection_manager
         
     def create_database_instance(self, db):
         
@@ -72,9 +74,23 @@ class ContainerManager :
         
         database_instance = self.client.containers.run(
             **database_instance_config
+        ) 
+        
+        database_connection_url = self.connection_manager.database_connection_url_generator(
+            
+            engine = db.engine ,
+            username = db.username ,
+            password = db.password,
+            database = db.database ,
+            host = "localhost",
+            port = host_port
+            
         )
         
-        return database_instance 
+        return {
+                "database_connection_url": database_connection_url,
+            }
+         
     
     def list_all_database_instance(self):
         return self.client.containers.list(all =True)
